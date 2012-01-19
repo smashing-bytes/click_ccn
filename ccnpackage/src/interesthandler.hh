@@ -13,7 +13,7 @@ class InterestHandler : public Element
 	const char *processing() const;
 	void push(int port, Packet *p);
 	const char *port_count() const	{ return "-/-"; }
-	Packet *pull(int port);
+//	Packet *pull(int port);
 	int initialize(ErrorHandler *errh);
 };
 

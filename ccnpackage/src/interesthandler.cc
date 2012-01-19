@@ -25,17 +25,18 @@ const char *InterestHandler::processing() const
 
 void InterestHandler::push(int port, Packet *p)
 {
-	output(0).push(p);
+	click_chatter("Int Handler\n");
+	p->kill();
 }
-
+/*
 Packet *InterestHandler::pull(int port)
 {
 	return input(0).pull();
 }
-
+*/
 int InterestHandler::initialize(ErrorHandler *errh)
 {
-    errh->message("Testing forwarder");
+    errh->message("Testing PIT");
     return 0;
 }
 

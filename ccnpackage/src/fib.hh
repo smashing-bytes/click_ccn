@@ -8,13 +8,14 @@ class Forwarding : public Element
 public:
 
 	Forwarding();
-        const char* class_name() const	{ return "Forwarding"; }
+	const char* class_name() const	{ return "Forwarding"; }
 	Forwarding *clone() const;
 	const char *processing() const;
 	void push(int port, Packet *p);
 	const char *port_count() const	{ return "-/-"; }
 	Packet *pull(int port);
 	int initialize(ErrorHandler *errh);
+	//Packet *simple_action(Packet *p);
 };
 
 /*
