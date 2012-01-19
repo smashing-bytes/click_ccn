@@ -1,21 +1,20 @@
-#ifndef _FIB_HH_
-#define _FIB_HH
+#ifndef _CONTENTSTORE_HH_
+#define _CONTENTSTORE_HH_
 #include <click/element.hh>
 CLICK_DECLS
 
-class Forwarding : public Element
+class ContentStore : public Element
 {
-public:
+	public:
 
-	Forwarding();
-	const char* class_name() const	{ return "Forwarding"; }
-	Forwarding *clone() const;
+	ContentStore();
+	const char* class_name() const { return "ContentStore"; }
+	ContentStore *clone() const;
 	const char *processing() const;
 	void push(int port, Packet *p);
 	const char *port_count() const	{ return "-/-"; }
-	Packet *pull(int port);
+//	Packet *pull(int port);
 	int initialize(ErrorHandler *errh);
-	//Packet *simple_action(Packet *p);
 };
 
 /*
