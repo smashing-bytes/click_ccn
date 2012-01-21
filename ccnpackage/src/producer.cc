@@ -47,14 +47,23 @@ int Producer::initialize(ErrorHandler *errh)
 	cout << "Producer initialized!" << endl;
 	
 	const char *name = "/a/b/c";
+	sleep(1);
+	Packet *p = create_interest(name, true);
+	output(0).push(p);
+	
+	
+	name = "/a/b/";
 
-	while(1)
-	{
-		
-		Packet *p = create_interest(name, true);
-		output(0).push(p);
-		sleep(1);
-	}
+	p = create_interest(name, true);
+	output(0).push(p);
+	sleep(1);
+	
+	name = "/a/";
+
+	p = create_interest(name, true);
+	output(0).push(p);
+	sleep(1);
+	
 	return 0;
 }
 
