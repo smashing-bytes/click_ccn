@@ -1,4 +1,4 @@
-Click_CCN is an implementation of PARC's CCNx in the Click Modular Router.
+CCN-Click is an implementation of CCN (Content Centric Networking) in the Click Modular Router.
 
 Charalampos Fokas,
 Athens University of Economics and Business
@@ -6,7 +6,7 @@ Department of Systems and Networking
 Mobile Multimedia Laboratory (http://mm.aueb.gr)
 
 
-Click_CCN is free software: you can redistribute it and/or modify
+CCN-Click is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
