@@ -1,8 +1,26 @@
-#include <click/config.h>
+/*  
+ *  This file is part of CCN-.
+ * 
+ *  CCN- is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  CCN-Click is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with CCN-Click.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+	
+#include </config.h>
 #include "ccnclassifier.hh"
-#include <click/args.hh>
-#include <click/error.hh>
-#include <click/llrpc.h>
+#include </args.hh>
+#include </error.hh>
+#include </llrpc.h>
 #include "ccn_packets.hh"
 
 EXPORT_ELEMENT(CCNClassifier);
@@ -27,7 +45,7 @@ const char *CCNClassifier::processing() const
 void CCNClassifier::push(int port, Packet *p)
 {
 	uint8_t packetType;
-	click_chatter("CCNClassifier\n");
+	_chatter("CCNClassifier\n");
 	
 	/*Get annotation byte to determine type of packet*/
 	
