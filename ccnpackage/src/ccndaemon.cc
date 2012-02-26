@@ -16,16 +16,16 @@
  */
 
 	
-#include </config.h>
+#include <click/config.h>
 #include "ccndaemon.hh"
 #include <iostream>
-#include </args.hh>
-#include </error.hh>
-#include </llrpc.h>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/llrpc.h>
 #include "ccn_packets.hh"
 
 EXPORT_ELEMENT(CCNDaemon);
-
+CLICK_DECLS
 using namespace std;
 
 CCNDaemon::CCNDaemon()
@@ -44,12 +44,54 @@ const char *CCNDaemon::processing() const
 	return AGNOSTIC;
 }
 
+/**
+ * Creates a Click compatible packet and annotates it
+ * 
+ * @param External packet
+ */
+Packet *CCNDaemon::annotate_packet(Packet *p)
+{
+	/*Raw packet data*/
+	const unsigned char *data = p->data();
+	uint8_t type;
+	/*Check packet type and annotate it correctly*/
+	if(data[0] > 2)
+		return NULL;
+	type = data[0];
+	
+	Packet *ret = Packet::make((data + 1), CONTENT_SIZE_MAX);
+	ret->set_anno_u8(0, type);
+	
+	return ret;
+	
+		
+}
+
+/**
+ * Receives a packet from an outside source, annotates it and forwards it
+ */
 void CCNDaemon::push(int port, Packet *p)
 {
-	cout << p->data() << endl;
-	output(0).push(p);
+	/*Annotate the packet into a new one*/
+	//Packet *tmp = annotate_packet(p);
+	if(port == 0)
+	{
+		cout << "Local" << endl;
+		cout << "PID: " << endl; //TODO: Get PID 
+	}
+	else if (port == 1)
+	{
+		cout << "Remote" << endl;
+		cout << "IP: " << p->transport_header() << endl;
+	}
+	else
+		cout << "Error" << endl;
+		
+	p->kill();
+	
+		
 }
 
 
-
+CLICK_ENDDECLS
 	

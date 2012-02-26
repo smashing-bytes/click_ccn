@@ -29,7 +29,13 @@
 #include <click/config.h>
 #include <click/packet.hh>
   
-
+/**
+ * Packet Dissemination
+ * 
+ *    2      4        2	       	    VARIABLE SIZE		VARIABLE SIZE
+ * [type][length][NAME END][****CONTENT/INTEREST NAME****][********DATA********]
+ * 
+ */
 #define INTEREST_SIZE_MAX 575 //bytes
 #define CONTENT_SIZE_MAX 575 
 
@@ -45,9 +51,9 @@ enum packet_types
 	DATA
 };
 
+
+/*Test functions*/
 Packet *create_packet(const void *data, unsigned short type);
-
-
 Packet *create_interest(const char *name, bool persistent);
 Packet *create_content(unsigned char *name, unsigned char *data);
 #endif

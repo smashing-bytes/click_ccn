@@ -18,17 +18,18 @@
 	
 #ifndef _INTERESTHANDLER_HH_
 #define _INTERESTHANDLER_HH_
-#include </config.h>
-#include </element.hh>
-#include </hashtable.hh>
-#include </vector.hh>
+#include <click/config.h>
+#include <click/element.hh>
+#include <click/hashtable.hh>
+#include <click/vector.hh>
 #include "face.hh"
-_DECLS
+CLICK_DECLS
 
 class InterestHandler : public Element
 {
 	private:
-	HashTable<const unsigned char * , Vector<Face*> > *pit;
+	HashTable<const char * , Vector<Face*> > *pit;
+	bool contains(const char *content_name, const char *intname);
 	public:
 
 	InterestHandler();
@@ -49,5 +50,5 @@ void push(int i, Packet *);	// process push request on input i
 Packet *pull(int i);		// process pull request on output i
 const char *processing() const; // return processing code
 */
-_ENDDECLS
+CLICK_ENDDECLS
 #endif

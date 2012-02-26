@@ -1,16 +1,16 @@
 require(package "ccn");
 
-fib :: Forwarding;
-inthandler :: InterestHandler;
-classifier :: CCNClassifier;
-cs :: ContentStore;
-pit :: InterestTable;
+//fib :: Forwarding;
+//inthandler :: InterestHandler;
+//classifier :: CCNClassifier;
+//cs :: ContentStore;
+//pit :: InterestTable;
 daemon :: CCNDaemon;
-producer :: Producer;
+//producer :: Producer;
 
-//Socket(TCP, 0.0.0.0, 5050) -> daemon;
+Socket(UDP, 0.0.0.0, 5050) -> [0]daemon;
+Socket(UDP, 0.0.0.0, 6060) -> [1]daemon;
 
-producer -> inthandler;
 
 
 

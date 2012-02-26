@@ -27,7 +27,7 @@ EXPORT_ELEMENT(ContentStore);
 
 ContentStore::ContentStore()
 {
-
+	cs = new HashTable<const unsigned char *, Packet* >();
 }
 
 
@@ -43,7 +43,16 @@ const char *ContentStore::processing() const
 
 void ContentStore::push(int port, Packet *p)
 {
-	click_chatter("ContentStore\n");
+	HashTable<const unsigned char *, Packet* >::iterator it;
+	uint8_t* type = p->anno_u8();
+	
+	for(it = cs->begin(); it; ++it) //Scan the Content-Store
+	{
+		
+			
+		
+		
+	}
 	p->kill();
 }
 /*

@@ -16,11 +16,11 @@
  */
 
 	
-#include </config.h>
+#include <click/config.h>
 #include "producer.hh"
-#include </args.hh>
-#include </error.hh>
-#include </llrpc.h>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/llrpc.h>
 #include "ccn_packets.hh"
 #include <iostream>
 
@@ -87,7 +87,7 @@ int Producer::initialize(ErrorHandler *errh)
 
 Packet *Producer::simple_action(Packet *p)
 {
-	_chatter("Forwarding received packet!\n");
+	click_chatter("Forwarding received packet!\n");
 	return 0;
 }
 

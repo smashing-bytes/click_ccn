@@ -18,11 +18,15 @@
 	
 #ifndef _CCNDAEMON_HH_
 #define _CCNDAEMON_HH_
-#include </element.hh>
-_DECLS
+#include <click/element.hh>
+CLICK_DECLS
 
 class CCNDaemon : public Element
 {
+	private:
+	
+	Packet* annotate_packet(Packet *p);
+	
 	public:
 
 	CCNDaemon();
@@ -32,6 +36,7 @@ class CCNDaemon : public Element
 	void push(int port, Packet *p);
 	const char *port_count() const	{ return "-/-"; }
 //	Packet *pull(int port);
+	
 };
 
 /*
@@ -40,6 +45,6 @@ void push(int i, Packet *);	// process push request on input i
 Packet *pull(int i);		// process pull request on output i
 const char *processing() const; // return processing code
 */
-_ENDDECLS
+CLICK_ENDDECLS
 #endif
  

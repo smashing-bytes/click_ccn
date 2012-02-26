@@ -19,7 +19,7 @@
 #ifndef _FACE_HH_
 #define _FACE_HH_
 
-#include </config.h>
+#include <click/config.h>
 #include <netinet/in.h>
 #include <unistd.h>
 #include <sys/types.h>

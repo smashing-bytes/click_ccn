@@ -18,19 +18,20 @@
 	
 #include "interesthandler.hh"
 #include <iostream>
-#include </config.h>
-#include </args.hh>
-#include </error.hh>
-#include </llrpc.h>
+#include <click/config.h>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/llrpc.h>
+#include <string.h>
 
 using namespace std;
 
 EXPORT_ELEMENT(InterestHandler);
-_DECLS
+CLICK_DECLS
 
 InterestHandler::InterestHandler()
 {
-	pit = new HashTable<const unsigned char *, Vector<Face*> >();
+	pit = new HashTable<const char *, Vector<Face*> >();
 }
 
 InterestHandler::~InterestHandler()
@@ -49,7 +50,7 @@ const char *InterestHandler::processing() const
 
 void InterestHandler::printPIT()
 {
-	HashTable<const unsigned char *, Vector<Face*> >::iterator it;
+	HashTable<const char *, Vector<Face*> >::iterator it;
 	for(it = pit->begin(); it; ++it)
 	{
 		cout << it.key() << "\n";
@@ -68,11 +69,30 @@ void InterestHandler::push(int port, Packet *p)
 		Vector<Face*> faceList;
 		faceList.push_back(new Face());
 		
-		pit->set(p->data(), faceList);
+		
+		pit->set((char *)p->data(), faceList);
+	}
+	
+	if(type == 2)
+	{
+		HashTable<const char *, Vector<Face*> >::iterator it;
+		for(it = pit->begin(); it; ++it)
+		{
+			if(contains((char *)p->data(), it.key()))
+			{
+				//Forward the data
+				
+			}
+		}
 	}
 	
 	printPIT();
 	p->kill();
+}
+
+bool InterestHandler::contains(const char *content_name, const char *intname)
+{
+	return (strncmp(content_name, intname, strlen(intname)));
 }
 /*
 Packet *InterestHandler::pull(int port)
@@ -86,4 +106,4 @@ int InterestHandler::initialize(ErrorHandler *errh)
     return 0;
 }
 
-_ENDDECLS
+CLICK_ENDDECLS

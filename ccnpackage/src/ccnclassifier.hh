@@ -18,8 +18,8 @@
 	
 #ifndef _CCNCLASSIFIER_HH_
 #define _CCNCLASSIFIER_HH_
-#include </element.hh>
-_DECLS
+#include <click/element.hh>
+CLICK_DECLS
 
 class CCNClassifier : public Element
 {
@@ -41,5 +41,5 @@ void push(int i, Packet *);	// process push request on input i
 Packet *pull(int i);		// process pull request on output i
 const char *processing() const; // return processing code
 */
-_ENDDECLS
+CLICK_ENDDECLS
 #endif

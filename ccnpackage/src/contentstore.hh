@@ -19,10 +19,14 @@
 #ifndef _CONTENTSTORE_HH_
 #define _CONTENTSTORE_HH_
 #include <click/element.hh>
+#include <click/hashtable.hh>
+#include <click/vector.hh>
 CLICK_DECLS
 
 class ContentStore : public Element
 {
+	private:
+	HashTable<const unsigned char * , Packet* > *cs;
 	public:
 
 	ContentStore();

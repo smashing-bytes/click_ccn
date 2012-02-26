@@ -16,11 +16,11 @@
  */
 
 	
-#include </config.h>
+#include <click/config.h>
 #include "ccnclassifier.hh"
-#include </args.hh>
-#include </error.hh>
-#include </llrpc.h>
+#include <click/args.hh>
+#include <click/error.hh>
+#include <click/llrpc.h>
 #include "ccn_packets.hh"
 
 EXPORT_ELEMENT(CCNClassifier);
@@ -45,7 +45,7 @@ const char *CCNClassifier::processing() const
 void CCNClassifier::push(int port, Packet *p)
 {
 	uint8_t packetType;
-	_chatter("CCNClassifier\n");
+	click_chatter("CCNClassifier\n");
 	
 	/*Get annotation byte to determine type of packet*/
 	
